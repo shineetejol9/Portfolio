@@ -62,6 +62,8 @@
         html {
             scroll-behavior: smooth;
             color-scheme: dark;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
         }
 
         body {
@@ -73,6 +75,11 @@
             overflow-x: hidden;
             line-height: 1.6;
             min-height: 100vh;
+            width: 100%;
+        }
+
+        img, svg {
+            max-width: 100%;
         }
 
         ::selection {
@@ -239,6 +246,7 @@
             padding: 6px 14px;
             border-radius: 20px;
             color: var(--cyan);
+            white-space: nowrap;
         }
 
         .status-dot {
@@ -248,6 +256,7 @@
             border-radius: 50%;
             box-shadow: 0 0 10px #00FF66;
             animation: pulse 2s infinite;
+            flex-shrink: 0;
         }
 
         @keyframes pulse {
@@ -272,7 +281,9 @@
             background: none;
             border: none;
             cursor: pointer;
-            padding: 4px 8px;
+            padding: 8px 10px;
+            min-width: 44px;
+            min-height: 44px;
         }
 
         /* Mobile Drawer Nav */
@@ -294,6 +305,8 @@
             opacity: 0;
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
             pointer-events: none;
+            max-height: calc(100vh - 65px);
+            overflow-y: auto;
         }
 
         .mobile-drawer.open {
@@ -307,7 +320,7 @@
             font-size: 1.5rem;
             letter-spacing: 2px;
             color: var(--paper);
-            padding: 8px 0;
+            padding: 10px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
@@ -319,6 +332,7 @@
         .hero {
             position: relative;
             min-height: 100vh;
+            min-height: 100svh;
             display: flex;
             align-items: center;
             justify-content: flex-start;
@@ -400,6 +414,7 @@
             position: relative;
             z-index: 3;
             max-width: 680px;
+            width: 100%;
         }
 
         .eyebrow {
@@ -419,7 +434,7 @@
         }
 
         .hero h1 {
-            font-size: clamp(3.5rem, 9.5vw, 7.5rem);
+            font-size: clamp(2.6rem, 9.5vw, 7.5rem);
             color: var(--paper);
             -webkit-text-stroke: 2px var(--purple);
             text-shadow:
@@ -428,6 +443,7 @@
                 0 0 40px rgba(139, 92, 246, 0.5);
             margin-bottom: 12px;
             letter-spacing: 2px;
+            word-break: break-word;
         }
 
         .role-badge {
@@ -491,6 +507,7 @@
             align-items: center;
             gap: 10px;
             border-radius: 2px;
+            min-height: 44px;
         }
 
         .btn.alt {
@@ -551,6 +568,7 @@
             padding: 120px 8vw;
             position: relative;
             z-index: 2;
+            overflow-x: hidden;
         }
 
         .section-head {
@@ -558,6 +576,7 @@
             align-items: center;
             gap: 20px;
             margin-bottom: 60px;
+            flex-wrap: wrap;
         }
 
         .section-num {
@@ -572,7 +591,7 @@
         }
 
         .section-head h2 {
-            font-size: clamp(2.6rem, 6.5vw, 4.5rem);
+            font-size: clamp(2.2rem, 6.5vw, 4.5rem);
             background: var(--grad-text);
             -webkit-background-clip: text;
             background-clip: text;
@@ -582,6 +601,7 @@
 
         .section-head .rule {
             flex: 1;
+            min-width: 40px;
             height: 4px;
             background-image: repeating-linear-gradient(90deg, var(--violet) 0 12px, transparent 12px 20px);
         }
@@ -646,6 +666,7 @@
             margin-bottom: 10px;
             letter-spacing: 1px;
             font-weight: 700;
+            gap: 8px;
         }
 
         .stat-top span:first-child {
@@ -686,12 +707,13 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.85rem;
             font-weight: 700;
-            padding: 8px 18px;
+            padding: 10px 18px;
             background: rgba(13, 17, 38, 0.8);
             color: var(--paper-muted);
             border: 2px solid rgba(139, 92, 246, 0.4);
             cursor: pointer;
             transition: all 0.25s ease;
+            min-height: 44px;
         }
 
         .tab-btn:hover,
@@ -722,6 +744,7 @@
             grid-column: span 3;
             border-radius: 4px;
             overflow: hidden;
+            min-width: 0;
         }
 
         .panel.big {
@@ -752,6 +775,7 @@
             margin-bottom: 12px;
             color: var(--paper);
             letter-spacing: 1px;
+            word-break: break-word;
         }
 
         .panel p {
@@ -803,6 +827,7 @@
             gap: 16px;
             align-items: center;
             margin-top: auto;
+            flex-wrap: wrap;
         }
 
         .panel-link {
@@ -815,6 +840,7 @@
             color: var(--cyan);
             cursor: pointer;
             transition: color 0.2s ease, transform 0.2s ease;
+            min-height: 32px;
         }
 
         .panel-link::after {
@@ -901,7 +927,7 @@
         }
 
         .contact h2 {
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-size: clamp(2.4rem, 8vw, 6rem);
             color: var(--ink);
             -webkit-text-stroke: 2px var(--paper);
             text-shadow: 6px 6px 0 rgba(7, 9, 19, 0.4);
@@ -949,6 +975,9 @@
             padding: 10px 22px;
             box-shadow: 4px 4px 0 var(--ink);
             transition: transform 0.2s ease, background 0.2s ease;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
         }
 
         .social-row a:hover {
@@ -961,6 +990,9 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
+            left: 30px;
+            margin: 0 auto;
+            max-width: 420px;
             background: var(--ink);
             color: var(--cyan);
             border: 2px solid var(--cyan);
@@ -974,6 +1006,7 @@
             opacity: 0;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             pointer-events: none;
+            text-align: center;
         }
 
         .toast.show {
@@ -1008,6 +1041,8 @@
             box-shadow: 0 0 50px rgba(0, 240, 255, 0.3), 15px 15px 0 var(--purple);
             width: 100%;
             max-width: 720px;
+            max-height: 85vh;
+            overflow-y: auto;
             padding: 40px;
             border-radius: 4px;
             position: relative;
@@ -1028,8 +1063,8 @@
             border: 2px solid var(--purple);
             font-family: 'JetBrains Mono', monospace;
             font-size: 1.2rem;
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1047,6 +1082,8 @@
             font-size: 2.5rem;
             margin-bottom: 8px;
             color: var(--cyan);
+            padding-right: 40px;
+            word-break: break-word;
         }
 
         .modal-tag {
@@ -1075,7 +1112,7 @@
             color: var(--paper);
             margin-bottom: 8px;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 10px;
         }
 
@@ -1089,7 +1126,7 @@
             background: var(--ink);
             color: var(--paper-muted);
             text-align: center;
-            padding: 30px;
+            padding: 30px 20px;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.8rem;
             letter-spacing: 1px;
@@ -1112,7 +1149,13 @@
             transform: translateY(0);
         }
 
-        /* ---------- RESPONSIVE BREAKPOINTS ---------- */
+        /* ============================================================
+     RESPONSIVE BREAKPOINTS
+     Covers large desktops down through small phones, plus
+     landscape-orientation and touch-device refinements.
+     ============================================================ */
+
+        /* ---- Large tablets / small laptops ---- */
         @media (max-width: 1100px) {
             .hero-character-wrap {
                 right: 0;
@@ -1122,6 +1165,26 @@
             }
         }
 
+        /* ---- Tablets (portrait) ---- */
+        @media (max-width: 900px) {
+            .section {
+                padding: 90px 6vw;
+            }
+
+            .panels {
+                gap: 20px;
+            }
+
+            .panel.big {
+                grid-column: span 6;
+            }
+
+            .panel.small {
+                grid-column: span 3;
+            }
+        }
+
+        /* ---- Nav collapses to burger / drawer ---- */
         @media (max-width: 880px) {
             nav {
                 padding: 14px 20px;
@@ -1169,8 +1232,288 @@
             }
         }
 
-        .logo-tag {
-            font-size: 1.5rem;
+        /* ---- Small tablets / large phones (landscape too) ---- */
+        @media (max-width: 720px) {
+            .section-head {
+                gap: 14px;
+                margin-bottom: 42px;
+            }
+
+            .caption-box {
+                padding: 18px 20px;
+                font-size: 1rem;
+            }
+
+            .cta-row {
+                gap: 14px;
+            }
+
+            .btn {
+                font-size: 1.1rem;
+                padding: 13px 26px;
+                flex: 1 1 auto;
+                justify-content: center;
+            }
+
+            .stats-bio,
+            .stats-list {
+                padding: 26px;
+            }
+
+            .stats-bio p {
+                font-size: 1rem;
+            }
+        }
+
+        /* ---- Phones ---- */
+        @media (max-width: 600px) {
+            body {
+                line-height: 1.55;
+            }
+
+            nav {
+                padding: 12px 16px;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .logo-tag {
+                font-size: 1.1rem;
+            }
+
+            .mobile-drawer {
+                padding: 20px;
+            }
+
+            .hero {
+                padding: 110px 6vw 70px;
+                min-height: auto;
+                padding-bottom: 140px;
+            }
+
+            .eyebrow {
+                font-size: 0.95rem;
+                padding: 5px 14px;
+                margin-bottom: 20px;
+                box-shadow: 4px 4px 0 var(--ink), 0 0 20px rgba(0, 240, 255, 0.3);
+            }
+
+            .hero h1 {
+                -webkit-text-stroke: 1.5px var(--purple);
+                text-shadow:
+                    4px 4px 0 var(--blue-dp),
+                    7px 7px 0 var(--ink),
+                    0 0 30px rgba(139, 92, 246, 0.5);
+                margin-bottom: 10px;
+            }
+
+            .role-badge {
+                box-shadow: 4px 4px 0 var(--pink);
+                margin-bottom: 24px;
+            }
+
+            .caption-box {
+                box-shadow: 5px 5px 0 var(--purple), 0 0 20px rgba(0, 0, 0, 0.5);
+                margin-bottom: 28px;
+            }
+
+            .cta-row {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .section {
+                padding: 70px 6vw;
+            }
+
+            .section-head h2 {
+                font-size: clamp(1.9rem, 8vw, 3rem);
+            }
+
+            .section-num {
+                font-size: 0.85rem;
+                padding: 3px 10px;
+            }
+
+            .stats-wrap {
+                box-shadow: 6px 6px 0 var(--blue-dp), 0 0 30px rgba(0, 0, 0, 0.6);
+            }
+
+            .stats-bio,
+            .stats-list {
+                padding: 22px;
+            }
+
+            .filter-tabs {
+                gap: 8px;
+            }
+
+            .tab-btn {
+                font-size: 0.78rem;
+                padding: 9px 14px;
+                flex: 1 1 auto;
+                text-align: center;
+            }
+
+            .panels {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .panel,
+            .panel.big,
+            .panel.small {
+                grid-column: span 1;
+                padding: 24px;
+            }
+
+            .panel:hover {
+                transform: translateY(-4px);
+            }
+
+            .panel h3 {
+                font-size: 1.7rem;
+            }
+
+            .panel p {
+                -webkit-line-clamp: 5;
+            }
+
+            .chips img {
+                height: 24px;
+            }
+
+            .toolgrid {
+                gap: 10px;
+            }
+
+            .tool {
+                font-size: 0.85rem;
+                padding: 10px 16px;
+                gap: 8px;
+            }
+
+            .tool-icon {
+                width: 18px;
+                height: 18px;
+            }
+
+            .contact {
+                padding: 80px 6vw;
+            }
+
+            .contact .sub {
+                font-size: 0.9rem;
+                margin-bottom: 30px;
+            }
+
+            .contact .btn {
+                width: 100%;
+                font-size: 1.15rem;
+                padding: 14px 30px;
+                box-shadow: 5px 5px 0 var(--ink);
+            }
+
+            .social-row {
+                margin-top: 32px;
+                gap: 12px;
+            }
+
+            .social-row a {
+                font-size: 0.82rem;
+                padding: 9px 16px;
+                box-shadow: 3px 3px 0 var(--ink);
+            }
+
+            .modal-box {
+                padding: 26px 22px;
+                max-height: 90vh;
+            }
+
+            .modal-title {
+                font-size: 1.9rem;
+            }
+
+            .modal-close {
+                width: 36px;
+                height: 36px;
+                top: 14px;
+                right: 14px;
+            }
+
+            .toast {
+                left: 16px;
+                right: 16px;
+                bottom: 20px;
+                font-size: 0.8rem;
+                padding: 12px 18px;
+            }
+        }
+
+        /* ---- Small / narrow phones ---- */
+        @media (max-width: 380px) {
+            .hero h1 {
+                letter-spacing: 1px;
+            }
+
+            .role-badge {
+                font-size: 0.85rem;
+                padding: 5px 14px;
+            }
+
+            .btn {
+                font-size: 1rem;
+                padding: 12px 20px;
+            }
+
+            .panel {
+                padding: 20px;
+            }
+
+            .panel h3 {
+                font-size: 1.5rem;
+            }
+
+            .contact h2 {
+                -webkit-text-stroke: 1.5px var(--paper);
+            }
+        }
+
+        /* ---- Short / landscape phones: avoid oversized hero ---- */
+        @media (max-height: 480px) and (orientation: landscape) {
+            .hero {
+                min-height: auto;
+                padding: 120px 6vw 60px;
+            }
+
+            .hero-character-wrap {
+                display: none;
+            }
+        }
+
+        /* ---- Touch devices: drop hover-only affordances, ensure tap targets ---- */
+        @media (hover: none) and (pointer: coarse) {
+
+            .panel:hover,
+            .tool:hover,
+            .btn:hover,
+            .social-row a:hover {
+                transform: none;
+            }
+
+            .panel-link,
+            .tab-btn,
+            .btn,
+            .social-row a,
+            .burger,
+            .modal-close {
+                min-height: 44px;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
